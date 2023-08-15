@@ -15,10 +15,11 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
+
+
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    background = OuterSpace300,
+    onBackground = OuterSpace200,
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -37,6 +38,19 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
+//@Composable
+//fun Calculator2Theme(content: @Composable () -> Unit) {
+//    val colors = DarkColorScheme
+//    val systemUiController = rememberSystemUiController()
+//
+//    systemUiController.setSystemBarsColor(color = colors.background)
+//    MaterialTheme(
+//        colorScheme = colors,
+//        typography = Typography,
+//        content = content
+//    )
+//}
+
 @Composable
 fun Calculator2Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -44,6 +58,7 @@ fun Calculator2Theme(
     dynamicColor: Boolean = true,
     content: @Composable () -> Unit
 ) {
+    val colors = DarkColorScheme
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
@@ -63,8 +78,9 @@ fun Calculator2Theme(
     }
 
     MaterialTheme(
-        colorScheme = colorScheme,
+        colorScheme = colors,
         typography = Typography,
-        content = content
+        content = content,
+
     )
 }
